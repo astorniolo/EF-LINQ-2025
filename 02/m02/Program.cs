@@ -10,8 +10,8 @@
 			//MetodosAnonimos.Demos();
 			//ExpresionesLambda.Demos();
 			//AccionYFunc.Demos();    // son delegados 
-			Predicados.Demos();
-			//InterfacesIEnumerableYIQueryable.Demos();
+			//Predicados.Demos();
+			InterfacesIEnumerableYIQueryable.Demos();
 		}
 	}
 }

@@ -1,8 +1,10 @@
 ﻿
-//using m02.clases;
+using m02.Clases;
 using System.Collections.Generic;
 using System.Reflection.Emit;
-//using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+
 
 namespace m02
 {
@@ -37,13 +39,17 @@ namespace m02
             //DemoIEnumerable2();
             //DemoIEnumerable3();
 
-            //DemoIQueryable1();
+            DemoIQueryable1();
+            //mostramos consulta a bd con EF y linq
         }
 
         #region DemoIEnumerable1
         private static void DemoIEnumerable1()
         {
             // Crear una lista de números y recorrerla usando IEnumerable<T>
+            // podriamos hacerlo con var que hace una inferencia
+            //var numeros = new List<int> { 1, 2, 3, 4, 5 };
+            // o con list<int y sabemos que lista es Ienumerable 
             IEnumerable<int> numeros = new List<int> { 1, 2, 3, 4, 5 };
 
             Console.WriteLine("Recorriendo una lista de números con IEnumerable<T>:");
@@ -61,6 +67,7 @@ namespace m02
         private static void DemoIEnumerable2()
         {
             // Crear una matriz de cadenas y recorrerla usando IEnumerable<T>
+            //tenemos una matriz que tb soporta la interface IEnumerable
             string[] colores = { "Rojo", "Verde", "Azul" };
             Console.WriteLine("Recorriendo una matriz de cadenas con IEnumerable<T>:");
 
@@ -121,6 +128,7 @@ namespace m02
                 IQueryable<Cliente> consulta = dbContext.Clientes.Where(c => c.Ciudad == "CABA");
 
                 // Ejecutar la consulta y obtener los resultados
+                // se ejeguta cuando hago toList()
                 var resultados = consulta.ToList();
 
                 // Mostrar los clientes que están en CABA
@@ -138,6 +146,7 @@ namespace m02
 
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
+                // dependencias agregar nuget "microsof entitey framewor. in memory
                 optionsBuilder.UseInMemoryDatabase("TestDatabase");
             }
 
@@ -161,5 +170,4 @@ namespace m02
 
         #endregion
     }
-}
 }
